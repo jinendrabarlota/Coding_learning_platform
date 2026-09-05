@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="card p-4">
+
+        <h1 class="text-pink">
+
+            {{ problem.title }}
+
+        </h1>
+
+        <div class="mb-3">
+
+            <span class="badge bg-info">
+
+                {{ problem.difficulty }}
+
+            </span>
+
+        </div>
+
+        <h4 class="text-pink">
+
+            Problem Description
+        </h4>
+
+        <p>
+
+            {{ problem.description }}
+
+        </p>
+
+        <div class="mt-4 mb-4">
+
+            <button
+                class="btn btn-warning me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#hint1Modal">
+
+                💡 Hint 1
+
+            </button>
+
+            <button
+                class="btn btn-info me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#hint2Modal">
+
+                💡💡 Hint 2
+
+            </button>
+
+            <button
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#hint3Modal">
+
+                💡💡💡 Strategy
+
+            </button>
+
+        </div>
+
+        <hr>
+
+        <h5 class="text-pink">
+
+            Sample Input
+
+        </h5>
+
+        <pre class="code-box">
+
+{{ problem.sample_input }}
+
+        </pre>
+
+        <h5 class="text-pink mt-4">
+
+            Sample Output
+
+        </h5>
+
+        <pre class="code-box">
+
+{{ problem.sample_output }}
+
+        </pre>
+
+        <a href="/submit/{{ problem.id }}/"
+           class="btn btn-success mt-4">
+
+            🚀 Solve Problem
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- Hint 1 Modal -->
+
+<div class="modal fade"
+     id="hint1Modal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content bg-dark text-white">
+
+            <div class="modal-header">
+
+                <h5>
+
+                    💡 Hint 1
+
+                </h5>
+
+                <button
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                {{ problem.hint_1 }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Hint 2 Modal -->
+
+<div class="modal fade"
+     id="hint2Modal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content bg-dark text-white">
+
+            <div class="modal-header">
+
+                <h5>
+
+                    💡💡 Hint 2
+
+                </h5>
+
+                <button
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                {{ problem.hint_2 }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Hint 3 Modal -->
+
+<div class="modal fade"
+     id="hint3Modal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content bg-dark text-white">
+
+            <div class="modal-header">
+
+                <h5>
+
+                    💡💡💡 Solution Strategy
+
+                </h5>
+
+                <button
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                {{ problem.hint_3 }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+.text-pink{
+
+    color:#ff1493;
+
+}
+
+.card{
+
+    background:#111;
+
+    border:1px solid #222;
+
+    border-radius:20px;
+
+    color:white;
+
+}
+
+.code-box{
+
+    background:#0d1117;
+
+    color:#58a6ff;
+
+    border:1px solid #30363d;
+
+    border-radius:10px;
+
+    padding:15px;
+
+}
+
+</style>
+
+{% endblock %}

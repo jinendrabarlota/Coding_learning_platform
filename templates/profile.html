@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div class="card p-4 text-center">
+
+                <h1 style="font-size:80px;">
+                    👤
+                </h1>
+
+                <h3 class="text-pink">
+
+                    {{ request.user.username }}
+
+                </h3>
+
+                <p>
+
+                    {{ request.user.email }}
+
+                </p>
+
+                <p>
+
+                    Joined:
+                    {{ request.user.date_joined|date:"d M Y" }}
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="card p-4">
+
+                <h2 class="text-pink">
+
+                    Performance Stats
+
+                </h2>
+
+                <hr>
+
+                <div class="row text-center">
+
+                    <div class="col-md-4">
+
+                        <h1 class="text-pink">
+
+                            {{ solved_count }}
+
+                        </h1>
+
+                        <p>
+
+                            Problems Solved
+
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <h1 class="text-pink">
+
+                            {{ submission_count }}
+
+                        </h1>
+
+                        <p>
+
+                            Submissions
+
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <h1 class="text-pink">
+
+                            {{ average_score|floatformat:1 }}
+
+                        </h1>
+
+                        <p>
+
+                            Avg Score
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card p-4 mt-4">
+
+                <h3 class="text-pink">
+
+                    Achievements
+
+                </h3>
+
+                <br>
+
+                <span class="badge bg-success p-2">
+
+                    Beginner Coder
+
+                </span>
+
+                <span class="badge bg-primary p-2">
+
+                    Problem Solver
+
+                </span>
+
+                <span class="badge bg-warning p-2">
+
+                    Active Learner
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

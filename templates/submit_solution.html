@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="card p-4">
+
+        <h2 class="text-pink">
+            {{ problem.title }}
+        </h2>
+
+        <p>
+            <strong>Difficulty:</strong>
+
+            <span class="badge bg-info">
+                {{ problem.difficulty }}
+            </span>
+        </p>
+
+        <hr>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Language
+
+                </label>
+
+                <select
+                    name="language"
+                    class="form-select">
+
+                    <option value="python">
+
+                        Python
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <textarea
+                name="code"
+                id="code"
+                hidden></textarea>
+
+            <div
+                id="editor"
+                style="
+                height:500px;
+                border:1px solid #333;
+                border-radius:15px;">
+            </div>
+
+            <br>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Custom Input
+
+                </label>
+
+                <textarea
+                    id="custom-input"
+                    class="form-control"
+                    rows="5"
+                    placeholder="Enter input here..."></textarea>
+
+            </div>
+
+            <button
+                type="button"
+                id="run-btn"
+                class="btn btn-warning">
+
+                ▶ Run Code
+
+            </button>
+
+            <button
+                type="submit"
+                class="btn btn-success">
+
+                🚀 Submit Solution
+
+            </button>
+
+        </form>
+
+        <hr>
+
+        <h4 class="text-pink">
+
+            Output Console
+
+        </h4>
+
+        <pre
+            id="output-console"
+            class="console-box">
+
+Run your code here...
+
+        </pre>
+
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+
+<script>
+
+require.config({
+
+    paths: {
+
+        vs:
+        'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs'
+
+    }
+
+});
+
+require(
+
+['vs/editor/editor.main'],
+
+function () {
+
+window.editor = monaco.editor.create(
+
+document.getElementById('editor'),
+
+{
+
+value:
+`# Write your solution here
+
+print("Hello Rift Koders")
+`,
+
+language: 'python',
+
+theme: 'vs-dark',
+
+automaticLayout: true
+
+}
+
+);
+
+});
+
+document.querySelector("form")
+.addEventListener(
+"submit",
+function(){
+
+document.getElementById("code").value =
+editor.getValue();
+
+});
+
+document.getElementById("run-btn")
+.addEventListener(
+"click",
+
+function(){
+
+document.getElementById("code").value =
+editor.getValue();
+
+fetch("/submit/run/", {
+
+method: "POST",
+
+headers: {
+
+"Content-Type":
+"application/x-www-form-urlencoded",
+
+"X-CSRFToken":
+document.querySelector(
+"[name=csrfmiddlewaretoken]"
+).value
+
+},
+
+body:
+
+"code=" +
+encodeURIComponent(
+editor.getValue()
+)
+
++
+
+"&custom_input=" +
+
+encodeURIComponent(
+document.getElementById(
+"custom-input"
+).value
+)
+
+})
+
+.then(
+response =>
+response.json()
+)
+
+.then(
+data => {
+
+document.getElementById(
+"output-console"
+).innerText =
+data.output;
+
+}
+);
+
+});
+
+</script>
+
+<style>
+
+.text-pink{
+
+color:#ff1493;
+
+}
+
+.card{
+
+background:#111;
+
+border:1px solid #222;
+
+border-radius:20px;
+
+color:white;
+
+}
+
+.console-box{
+
+background:#0d1117;
+
+color:#00ff99;
+
+border:1px solid #30363d;
+
+border-radius:15px;
+
+padding:20px;
+
+min-height:150px;
+
+}
+
+</style>
+
+{% endblock %}

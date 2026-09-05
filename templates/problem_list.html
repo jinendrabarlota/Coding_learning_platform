@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-pink mb-4">
+
+    Coding Challenges
+
+</h1>
+
+<div class="card p-4 mb-4">
+
+    <form method="GET">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Search Problems">
+
+            </div>
+
+            <div class="col-md-4">
+
+                <select
+                name="difficulty"
+                class="form-select">
+
+                    <option value="">
+                        All Difficulties
+                    </option>
+
+                    <option value="Easy">
+                        Easy
+                    </option>
+
+                    <option value="Medium">
+                        Medium
+                    </option>
+
+                    <option value="Hard">
+                        Hard
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="col-md-2">
+
+                <button
+                class="btn btn-primary w-100">
+
+                    Filter
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+<div class="row">
+
+{% for problem in problems %}
+
+<div class="col-md-4">
+
+    <div class="card p-4 mb-4">
+
+        <h4>
+
+            {{ problem.title }}
+
+        </h4>
+
+        <br>
+
+        {% if problem.difficulty == "Easy" %}
+
+            <span class="badge bg-success">
+
+                Easy
+
+            </span>
+
+        {% elif problem.difficulty == "Medium" %}
+
+            <span class="badge bg-warning">
+
+                Medium
+
+            </span>
+
+        {% else %}
+
+            <span class="badge bg-danger">
+
+                Hard
+
+            </span>
+
+        {% endif %}
+
+        <br><br>
+
+        <p>
+
+            {{ problem.description|truncatechars:120 }}
+
+        </p>
+
+        <a
+        href="/problems/{{ problem.id }}/"
+        class="btn btn-primary">
+
+            Solve Challenge
+
+        </a>
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<div class="card p-4">
+
+    No problems found.
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

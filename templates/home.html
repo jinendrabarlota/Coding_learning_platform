@@ -1,0 +1,263 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+
+<div class="row align-items-center mb-5">
+
+    <div class="col-md-6">
+
+        <h5 class="text-pink">
+            WELCOME TO
+        </h5>
+
+        <h1 class="display-2 fw-bold">
+            Rift Koders
+        </h1>
+
+        <h3>
+            AI-Powered Coding Learning Platform
+        </h3>
+
+        <p class="mt-4">
+
+            Learn coding through real-world challenges,
+            AI-powered reviews, leaderboard rankings,
+            and personalized progress tracking.
+
+        </p>
+
+        <a href="/problems/"
+           class="btn btn-primary btn-lg mt-3">
+
+            Start Solving
+
+        </a>
+
+    </div>
+
+    <div class="col-md-6 text-center">
+
+        <img
+            src="{% static 'images/rift_logo.png' %}"
+            class="img-fluid"
+            style="max-height:350px;">
+
+    </div>
+
+</div>
+
+<!-- STATS SECTION -->
+
+<div class="row text-center mb-5">
+
+    <div class="col-md-3">
+
+        <div class="card p-4">
+
+            <h1 class="text-pink">120+</h1>
+
+            <h5>Problems</h5>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card p-4">
+
+            <h1 class="text-pink">500+</h1>
+
+            <h5>Students</h5>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card p-4">
+
+            <h1 class="text-pink">2500+</h1>
+
+            <h5>Submissions</h5>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card p-4">
+
+            <h1 class="text-pink">AI</h1>
+
+            <h5>Reviews</h5>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FEATURES -->
+
+<h2 class="text-center text-pink mb-4">
+
+    Why Choose Rift Koders?
+
+</h2>
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card p-4 mb-4">
+
+            <h4>🤖 AI Review</h4>
+
+            <p>
+
+                Get instant AI-powered feedback
+                on every coding submission.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card p-4 mb-4">
+
+            <h4>🏆 Leaderboard</h4>
+
+            <p>
+
+                Compete with other learners
+                and improve your ranking.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card p-4 mb-4">
+
+            <h4>📈 Analytics</h4>
+
+            <p>
+
+                Track progress, scores,
+                and coding performance.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FEATURED CHALLENGES -->
+
+<h2 class="text-center text-pink mt-5 mb-4">
+
+    Featured Challenges
+
+</h2>
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card p-4">
+
+            <h4>Two Sum</h4>
+
+            <p>Array Problem</p>
+
+            <a href="/problems/"
+               class="btn btn-primary">
+
+                Solve
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card p-4">
+
+            <h4>Reverse String</h4>
+
+            <p>String Problem</p>
+
+            <a href="/problems/"
+               class="btn btn-primary">
+
+                Solve
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card p-4">
+
+            <h4>Binary Tree Height</h4>
+
+            <p>Tree Problem</p>
+
+            <a href="/problems/"
+               class="btn btn-primary">
+
+                Solve
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- CALL TO ACTION -->
+
+<div class="card mt-5 p-5 text-center">
+
+    <h2 class="text-pink">
+
+        Ready To Improve Your Coding Skills?
+
+    </h2>
+
+    <p>
+
+        Join Rift Koders and start solving challenges today.
+
+    </p>
+
+    <a href="/users/register/"
+       class="btn btn-primary btn-lg">
+
+        Create Free Account
+
+    </a>
+
+</div>
+
+{% endblock %}

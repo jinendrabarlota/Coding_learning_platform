@@ -1,0 +1,387 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <div class="text-center mb-5">
+
+        <h1 class="text-pink fw-bold">
+            📊 Rift Koders Dashboard
+        </h1>
+
+        <p class="text-light">
+            Track your coding progress and achievements
+        </p>
+
+    </div>
+
+    <!-- Stats Row -->
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center p-4">
+
+                <h2 class="text-pink">
+                    {{ solved_count }}
+                </h2>
+
+                <p>
+                    Problems Solved
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center p-4">
+
+                <h2 class="text-success">
+                    {{ acceptance_rate }}%
+                </h2>
+
+                <p>
+                    Acceptance Rate
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center p-4">
+
+                <h2 class="text-warning">
+                    {{ total_submissions }}
+                </h2>
+
+                <p>
+                    Total Submissions
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center p-4">
+
+                <h4 class="text-info">
+                    {{ badge }}
+                </h4>
+
+                <p>
+                    Current Badge
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Daily Streak -->
+
+    <div class="row mt-4">
+
+        <div class="col-md-6">
+
+            <div class="card dashboard-card text-center p-4">
+
+                <h2>
+                    🔥 {{ current_streak }}
+                </h2>
+
+                <p>
+                    Current Streak
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card dashboard-card text-center p-4">
+
+                <h2>
+                    🏆 {{ longest_streak }}
+                </h2>
+
+                <p>
+                    Longest Streak
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Difficulty Breakdown -->
+
+    <div class="card dashboard-card p-4 mt-4">
+
+        <h3 class="text-pink mb-4">
+            🎯 Difficulty Breakdown
+        </h3>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="difficulty-box easy">
+
+                    <h4>
+                        🟢 Easy
+                    </h4>
+
+                    <h2>
+                        {{ easy_count }}
+                    </h2>
+
+                    <p>
+                        Solved
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="difficulty-box medium">
+
+                    <h4>
+                        🟡 Medium
+                    </h4>
+
+                    <h2>
+                        {{ medium_count }}
+                    </h2>
+
+                    <p>
+                        Solved
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="difficulty-box hard">
+
+                    <h4>
+                        🔴 Hard
+                    </h4>
+
+                    <h2>
+                        {{ hard_count }}
+                    </h2>
+
+                    <p>
+                        Solved
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Achievement Badges -->
+
+    <div class="card dashboard-card p-4 mt-4">
+
+        <h3 class="text-pink mb-4">
+            🏆 Achievement Badges
+        </h3>
+
+        <div class="row text-center">
+
+            <div class="col-md-3">
+
+                <div class="badge-box">
+
+                    <h1>
+                        🥉
+                    </h1>
+
+                    <h5>
+                        Beginner Solver
+                    </h5>
+
+                    <small>
+                        Solve 5 Problems
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="badge-box">
+
+                    <h1>
+                        🥈
+                    </h1>
+
+                    <h5>
+                        Intermediate Solver
+                    </h5>
+
+                    <small>
+                        Solve 25 Problems
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="badge-box">
+
+                    <h1>
+                        🥇
+                    </h1>
+
+                    <h5>
+                        Advanced Solver
+                    </h5>
+
+                    <small>
+                        Solve 50 Problems
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="badge-box">
+
+                    <h1>
+                        💎
+                    </h1>
+
+                    <h5>
+                        Rift Master
+                    </h5>
+
+                    <small>
+                        Solve 100 Problems
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+body{
+
+    background:#0d0d0d;
+    color:white;
+
+}
+
+.text-pink{
+
+    color:#ff1493;
+
+}
+
+.dashboard-card{
+
+    background:#111;
+    border:1px solid #222;
+    border-radius:20px;
+    color:white;
+    transition:0.3s ease;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+    border-color:#ff1493;
+
+    box-shadow:
+    0px 0px 20px rgba(255,20,147,0.3);
+
+}
+
+.difficulty-box{
+
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    color:white;
+
+}
+
+.easy{
+
+    background:#198754;
+
+}
+
+.medium{
+
+    background:#ffc107;
+    color:black;
+
+}
+
+.hard{
+
+    background:#dc3545;
+
+}
+
+.badge-box{
+
+    background:#1a1a1a;
+
+    border:1px solid #333;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    transition:0.3s;
+
+}
+
+.badge-box:hover{
+
+    transform:scale(1.05);
+
+    border-color:#ff1493;
+
+    box-shadow:
+    0px 0px 15px rgba(255,20,147,0.4);
+
+}
+
+</style>
+
+{% endblock %}
